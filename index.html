@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Stargazer's Society</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0A0F1C] text-white min-h-screen relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/20 to-blue-900/20"></div>
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="relative z-10 container mx-auto px-4 min-h-screen flex flex-col justify-center items-center">
+        <div class="max-w-2xl w-full space-y-8 backdrop-blur-lg bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl">
+            <div class="text-center space-y-4">
+                <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    Discover the Cosmos
+                </h1>
+                <p class="text-xl text-gray-300">Join an elite community of stargazers, astronomers, and cosmic enthusiasts</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                <div class="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-blue-400 text-xl mb-2">🔭</div>
+                    <h3 class="font-semibold mb-2">Equipment Access</h3>
+                    <p class="text-gray-400 text-sm">Access to premium telescopes and astronomical equipment</p>
+                </div>
+                <div class="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-purple-400 text-xl mb-2">👥</div>
+                    <h3 class="font-semibold mb-2">Community Events</h3>
+                    <p class="text-gray-400 text-sm">Join exclusive stargazing events and meetups</p>
+                </div>
+                <div class="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-indigo-400 text-xl mb-2">📚</div>
+                    <h3 class="font-semibold mb-2">Expert Knowledge</h3>
+                    <p class="text-gray-400 text-sm">Access to workshops and educational resources</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button id="signupBtn" class="group relative inline-flex items-center justify-center px-8 py-3 font-medium rounded-full text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:scale-105">
+                    <span class="relative">Begin Your Journey</span>
+                    <span class="ml-2">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="signupModal" class="modal-overlay backdrop-blur-sm">
+        <div class="modal max-w-md w-full">
+            <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                    <span class="text-2xl">🌟</span>
+                    Join the Stargazer's Society
+                </h2>
+                <form class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="name" class="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200" placeholder="Enter your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" class="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="telescope" class="block text-sm font-medium text-gray-700">Experience Level</label>
+                        <select id="telescope" class="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                            <option value="beginner">Beginner Stargazer</option>
+                            <option value="intermediate">Amateur Astronomer</option>
+                            <option value="advanced">Experienced Observer</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-end space-x-4 pt-4">
+                        <button type="button" id="closeModalBtn" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300">
+                            Join Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
