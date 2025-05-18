@@ -22,6 +22,21 @@ const hideModal = () => {
 
 closeModalBtn.addEventListener('click', hideModal);
 
+// Improved touch handling for modal close
+let touchStartY;
+signupModal.addEventListener('touchstart', (e) => {
+    if (e.target === signupModal) {
+        touchStartY = e.touches[0].clientY;
+    }
+}, { passive: true });
+
+signupModal.addEventListener('touchend', (e) => {
+    if (e.target === signupModal && touchStartY && Math.abs(e.changedTouches[0].clientY - touchStartY) < 5) {
+        hideModal();
+    }
+    touchStartY = null;
+}, { passive: true });
+
 // Close modal when clicking outside
 window.addEventListener('click', (event) => {
     if (event.target === signupModal) {
@@ -29,7 +44,7 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Form validation and submission
+// Form validation and submission with improved mobile UX
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -60,3 +75,12 @@ function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+
+// Handle viewport height for mobile browsers
+function updateViewportHeight() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+
+window.addEventListener('resize', updateViewportHeight);
+window.addEventListener('orientationchange', updateViewportHeight);
+updateViewportHeight();
