@@ -78,9 +78,28 @@ function isValidEmail(email) {
 
 // Handle viewport height for mobile browsers
 function updateViewportHeight() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-window.addEventListener('resize', updateViewportHeight);
-window.addEventListener('orientationchange', updateViewportHeight);
+// We listen to the resize event
+window.addEventListener('resize', () => {
+    // Avoid resize events from mobile address bar showing/hiding
+    setTimeout(updateViewportHeight, 100);
+});
+
+// We listen to the orientationchange event
+window.addEventListener('orientationchange', () => {
+    // Wait for the orientation change to complete
+    setTimeout(updateViewportHeight, 100);
+});
+
+// Initial call
 updateViewportHeight();
+
+// Add touch-action to allow native scrolling
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.touchAction = 'pan-y';
+});
