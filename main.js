@@ -65,7 +65,22 @@ form.addEventListener('submit', (e) => {
     
     // Mock form submission
     console.log('Form submitted:', { name, email, experience });
-    alert('Thank you for joining the Stargazer\'s Society! We\'ll be in touch soon.');
+    
+    // Show toast notification
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = `Welcome to the Stargazer's Society, ${name}! We'll contact you soon.`;
+    document.body.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    // Remove toast after 5 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => document.body.removeChild(toast), 300);
+    }, 5000);
+    
     hideModal();
     form.reset();
 });
